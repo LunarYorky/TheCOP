@@ -26,8 +26,9 @@
 # Jetbrains Rider
 .idea/*
 
-# Visual Studio cache directory
+# Visual Studio
 .vs/
+*.vsconfig
 
 # Gradle cache directory
 .gradle/
@@ -54,7 +55,6 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
-*.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -76,3 +76,8 @@ crashlytics-build.properties
 # Exceptions
 !*.dll
 !*.obj
+
+# Plugins
+/[Aa]ssets/*
+!/[Aa]ssets/TheCoP/
+!/[Aa]ssets/TheCoP.meta
