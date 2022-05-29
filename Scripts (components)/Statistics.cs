@@ -7,7 +7,7 @@ public class Statistics : MonoBehaviour
 {
     
     
-    //Базовые статы
+    // Basic Stats
     private int _basicHealth;
     private int _basicAdaptability;
     private int _basicDexterity;
@@ -15,13 +15,13 @@ public class Statistics : MonoBehaviour
     private int _id = 0;
     private int _Status = 0;
 
-    //Расчётные статы
+    // Calculated stats
     [SerializeField]
     private float maxHealth;
     [SerializeField]
     private float resresistance;
 
-    //Ресурсные статы
+    // resurses
     [SerializeField]
     private float currentHealth;
 
