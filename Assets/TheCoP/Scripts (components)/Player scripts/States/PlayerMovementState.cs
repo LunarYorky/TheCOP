@@ -24,7 +24,7 @@ namespace TheCoP.Scripts__components_.Player_scripts.States
         public void Tick()
         {
             var isMoving = _player.Movement.x != 0 || _player.Movement.y != 0;
-            _animator.SetBool(Walk, true);
+            _animator.SetBool(Walk, isMoving);
             if (!isMoving) return;
 
             _animator.SetFloat(Horizontal, _player.Movement.x);
