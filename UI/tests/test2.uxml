@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="height: 41px; align-items: flex-start; justify-content: center; padding-left: 10px; background-color: rgb(170, 89, 57); border-left-color: rgb(49, 26, 17); border-right-color: rgb(49, 26, 17); border-top-color: rgb(49, 26, 17); border-bottom-color: rgb(49, 26, 17); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; -unity-background-scale-mode: scale-to-fit;">
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="CharacterName" style="-unity-font-style: bold; font-size: 18px;" />
+    </ui:VisualElement>
+</ui:UXML>

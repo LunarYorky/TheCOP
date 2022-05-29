@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-items: flex-start; justify-content: flex-end; background-color: rgb(115, 88, 30); flex-direction: column-reverse;">
+        <ui:VisualElement style="align-items: center; justify-content: flex-end; flex-direction: column-reverse; width: 30%; background-color: rgb(152, 152, 152); height: auto; -unity-background-scale-mode: stretch-to-fill; flex-grow: 0;">
+            <ui:ListView name="MineMenu" focusable="true" fixed-item-height="41" style="flex-direction: column; align-items: auto; justify-content: flex-start; width: auto; flex-grow: 0; flex-basis: auto; flex-shrink: 1; -unity-background-scale-mode: stretch-to-fill;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
