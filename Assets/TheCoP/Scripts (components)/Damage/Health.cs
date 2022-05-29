@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Statistics))]
 public class Health : MonoBehaviour
 {
-
     private float currentHealth;
     private float resresistance;
 
@@ -14,7 +11,7 @@ public class Health : MonoBehaviour
         get { return resresistance; }
         set { resresistance = value; }
     }
-    
+
     public float CurrentHealth
     {
         get { return currentHealth; }
@@ -25,11 +22,10 @@ public class Health : MonoBehaviour
     {
         currentHealth = damage * resresistance;
     }
-    
+
     void Update()
     {
         if (currentHealth == 0)
-        Destroy(gameObject);
+            Destroy(gameObject);
     }
-
 }

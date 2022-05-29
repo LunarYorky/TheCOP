@@ -1,23 +1,20 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ItemsStorage : MonoBehaviour, IStatsModifier
 {
-
     private List<Item> storedItems;
 
-    public List<Item> StoredItems { get => storedItems; }
-    public int ItemsCount { get => storedItems.Count; }
+    public List<Item> StoredItems => storedItems;
+    public int ItemsCount => storedItems.Count;
 
     public void ModifyStatistics()
     {
         var statBlock = GetComponent<Statistics>();
         if (statBlock == null)
             return;
-
-
     }
 
     public void SortItemsList()
@@ -31,7 +28,7 @@ public class ItemsStorage : MonoBehaviour, IStatsModifier
         if (statBlock == null)
             return;
 
-        statBlock.CalculateStats(); //пересчитать статы
+        statBlock.CalculateStats(); //recalculate stats
     }
 
     public bool AddItem(short id, short number = 1)
@@ -46,6 +43,7 @@ public class ItemsStorage : MonoBehaviour, IStatsModifier
                 return true;
             }
         }
+
         storedItems.Add(newItem);
         calculateStats();
         return true;
@@ -53,11 +51,7 @@ public class ItemsStorage : MonoBehaviour, IStatsModifier
 
     public bool DeleteItem(int location, short number = 1)
     {
-        
-
         calculateStats();
         return true;
-
     }
-
 }

@@ -1,14 +1,12 @@
 using System;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
+
 using UnityEngine;
 
 public class StorageManager
 {
-
     private string directory;
 
     public StorageManager()
@@ -43,7 +41,7 @@ public class StorageManager
 
         if (player == null)
         {
-            //Чё? Респавн наверное... Или загрузка.
+            //Р§С‘? Р РµСЃРїР°РІРЅ РЅР°РІРµСЂРЅРѕРµ... РР»Рё Р·Р°РіСЂСѓР·РєР°.
         }
         else
         {
@@ -53,7 +51,6 @@ public class StorageManager
             saveData.IdStatusItemCount[0] = stats.Id;
             saveData.IdStatusItemCount[1] = stats.Status;
             saveData.IdStatusItemCount[2] = stats.ItemsCount;
-
         }
 
         int _i = 2;
@@ -74,7 +71,6 @@ public class StorageManager
             saveData.IdStatusItemCount[_ii] = statistics.ItemsCount;
             allItemsCount += statistics.ItemsCount;
             _ii++;
-
         }
 
         saveData.Items = new short[allItemsCount][];
@@ -99,19 +95,18 @@ public class StorageManager
                 saveData.Items[_iii][4] = item.Level;
                 for (int i = 5; i < length; i++)
                 {
-                    saveData.Items[_iii][i] = item.Enchants[i-5];
+                    saveData.Items[_iii][i] = item.Enchants[i - 5];
                 }
 
                 saveData.EquippedSlot[_iii] = item.EquippedSlot;
                 _iii++;
             }
-
         }
 
         return saveData;
     }
 
-    public SaveData LoadSaveData(byte number) //переделать реф
+    public SaveData LoadSaveData(byte number) //РїРµСЂРµРґРµР»Р°С‚СЊ СЂРµС„
     {
         if (!File.Exists(directory + "/gamesave" + number + ".save"))
         {
@@ -123,8 +118,7 @@ public class StorageManager
         FileStream file = File.Open(directory + "/gamesave" + number + ".save", FileMode.Open);
         SaveData save = (SaveData)bf.Deserialize(file);
         file.Close();
-        return save; //переделать
-        
+        return save; //РїРµСЂРµРґРµР»Р°С‚СЊ
     }
 
     public void DeleteSaveData(byte number)
@@ -136,15 +130,13 @@ public class StorageManager
     {
         var pattern = "^gamesave\\d\\.save$";
         var files = Directory.EnumerateFiles(directory);
-        foreach  ( string path in files )
+        foreach (string path in files)
         {
             if (Regex.IsMatch(Path.GetFileName(path), pattern))
             {
                 Debug.Log(path);
                 Debug.Log(Path.GetFileNameWithoutExtension(path)[8]);
             }
-
         }
     }
-
 }

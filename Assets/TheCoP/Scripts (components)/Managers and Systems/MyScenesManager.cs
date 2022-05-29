@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +8,7 @@ public class MyScenesManager : MonoBehaviour
         SceneManager.LoadScene(index, LoadSceneMode.Single);
     }
 
-        public void LSwitchSceneOn(string sceneName)
+    public void LSwitchSceneOn(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }

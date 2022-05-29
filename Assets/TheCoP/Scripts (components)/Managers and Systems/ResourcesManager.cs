@@ -1,15 +1,13 @@
 using System;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
+    private static Dictionary<int, ItemReference> items = new();
 
-    private static Dictionary<int,ItemReference> items = new();
-
-    public static Dictionary<int,ItemReference> Items
+    public static Dictionary<int, ItemReference> Items
     {
         get { return items; }
         private set { items = value; }
@@ -41,9 +39,9 @@ public class ResourcesManager : MonoBehaviour
             }
 
             items.Add(item.Id, item);
-
         }
     }
+
     public void CheckItemsIds()
     {
         var itemList = Resources.LoadAll<ItemReference>("");
@@ -56,7 +54,5 @@ public class ResourcesManager : MonoBehaviour
             ids[i] = item.Id;
             i++;
         }
-
-
     }
 }

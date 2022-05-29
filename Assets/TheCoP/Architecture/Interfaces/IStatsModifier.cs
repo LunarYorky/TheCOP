@@ -1,7 +1,6 @@
 using UnityEngine.EventSystems;
 
-public interface IStatsModifier: IEventSystemHandler
+public interface IStatsModifier : IEventSystemHandler
 {
     void ModifyStatistics();
-
 }

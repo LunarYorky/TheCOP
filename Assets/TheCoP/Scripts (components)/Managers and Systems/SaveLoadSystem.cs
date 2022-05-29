@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveLoadSystem : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemy;
-    [SerializeField]
-    private GameObject player;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject player;
     private StorageManager storageManager = new();
 
     public void SaveGame()
@@ -22,7 +18,6 @@ public class SaveLoadSystem : MonoBehaviour
         foreach (var item in enemys)
         {
             Destroy(item);
-
         }
 
         player.transform.position = new Vector3(saveData.Positions[0], saveData.Positions[1]);
@@ -30,10 +25,8 @@ public class SaveLoadSystem : MonoBehaviour
         for (int i = 2; i < saveData.Positions.Length; i += 2)
         {
             var pos = new Vector3(saveData.Positions[i], saveData.Positions[i + 1]);
-            Object.Instantiate(enemy, pos, new Quaternion());
+            Instantiate(enemy, pos, new Quaternion());
         }
-
-
     }
 
     public void DeleteSave()
@@ -41,11 +34,7 @@ public class SaveLoadSystem : MonoBehaviour
         storageManager.DeleteSaveData(1);
     }
 
-    public void OnApplicationQuit()  // OnApplicationFocus
+    public void OnApplicationQuit() // OnApplicationFocus
     {
-
     }
-
-
-
 }

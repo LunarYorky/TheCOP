@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    public float rotationTime; 
+    public float rotationTime;
     public float rotationAngle;
     public float damage;
 
@@ -25,15 +26,14 @@ public class HitBox : MonoBehaviour
         {
             speed *= -1;
         }
+
         StartCoroutine(Rotator());
     }
 
     private IEnumerator Rotator()
     {
-
         while (rotationTime > 0)
         {
-            
             hiting();
             Debug.Log("test");
 
@@ -41,8 +41,8 @@ public class HitBox : MonoBehaviour
             rotationTime -= Time.deltaTime;
 
             yield return new WaitForFixedUpdate();
-            
         }
+
         Destroy(gameObject);
     }
 
@@ -54,40 +54,37 @@ public class HitBox : MonoBehaviour
             if (interrupt[element])
             {
                 Debug.Log("123");
-                // прерывание атаки
+                // РїСЂРµСЂС‹РІР°РЅРёРµ Р°С‚Р°РєРё
                 Destroy(gameObject);
                 break;
-
             }
 
             if (!hitedTargets.Contains(targets[element]))
             {
                 hitedTargets.Add(targets[element]);
 
-                //логика отправки сообщения о попадании
+                //Р»РѕРіРёРєР° РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ Рѕ РїРѕРїР°РґР°РЅРёРё
                 var stats = targets[element].GetComponent<Statistics>();
                 if (stats != null)
                     stats.DealingDamage(damage);
-
             }
 
             targets.RemoveAt(element);
             distances.RemoveAt(element);
             interrupt.RemoveAt(element);
-
         }
-
     }
 
     private int LowElementIn(List<float> list)
     {
-        if (list.Count<2)
+        if (list.Count < 2)
         {
             return 0;
         }
+
         float min = list[0];
         int element = 0;
-        
+
         for (int i = 1; i < list.Count; i++)
         {
             if (list[i] < min)
@@ -96,6 +93,7 @@ public class HitBox : MonoBehaviour
                 element = i;
             }
         }
+
         return element;
     }
 
@@ -105,7 +103,5 @@ public class HitBox : MonoBehaviour
         targets.Add(col);
         interrupt.Add(col.tag == "Wall" || col.tag == "Solid" ? true : false);
         distances.Add(Vector3.Distance(parentPosition, col.transform.position));
-
     }
-
 }

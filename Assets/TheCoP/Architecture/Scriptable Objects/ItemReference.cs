@@ -12,10 +12,10 @@ public class ItemReference : ScriptableObject
     protected ItemType _itemType = ItemType.Item;
 
 
-    public short Id { get { return _id; } }
-    public string Name { get { return _name; } }
-    public Sprite Icon  { get { return _icon; } }
-    public float Volume { get { return _volume; } }
-    public float Weight { get { return _weight; } }
-    public ItemType ItemType { get => _itemType; }
+    public short Id => _id;
+    public string Name => _name;
+    public Sprite Icon => _icon;
+    public float Volume => _volume;
+    public float Weight => _weight;
+    public ItemType ItemType => _itemType;
 }

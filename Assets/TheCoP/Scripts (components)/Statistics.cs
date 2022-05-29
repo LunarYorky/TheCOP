@@ -1,32 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Statistics : MonoBehaviour
 {
-    
-    
     // Basic Stats
     private int _basicHealth;
     private int _basicAdaptability;
     private int _basicDexterity;
     private int _basicStrength;
-    private int _id = 0;
-    private int _Status = 0;
+    private int _id;
+    private int _status;
 
     // Calculated stats
-    [SerializeField]
-    private float maxHealth;
-    [SerializeField]
-    private float resresistance;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float resresistance;
 
-    // resurses
-    [SerializeField]
-    private float currentHealth;
+    // resources
+    [SerializeField] private float currentHealth;
 
     //gprops-------------------------------------------------------------------------------------
-    
+
     public float Resresistance
     {
         get { return resresistance; }
@@ -47,13 +40,13 @@ public class Statistics : MonoBehaviour
 
     public int Status
     {
-        get { return _Status; }
-        private set { _Status = value; }
+        get { return _status; }
+        private set { _status = value; }
     }
 
     public int ItemsCount
     {
-        get 
+        get
         {
             var itemsStorage = GetComponent<ItemsStorage>();
             return itemsStorage == null ? 0 : itemsStorage.ItemsCount;
@@ -71,13 +64,10 @@ public class Statistics : MonoBehaviour
     public void CalculateStats()
     {
         ExecuteEvents.Execute<IStatsModifier>(gameObject, null, (x, y) => x.ModifyStatistics());
-
     }
 
     public void DealingDamage(float damage)
     {
         CurrentHealth -= damage * resresistance;
     }
-
-
 }

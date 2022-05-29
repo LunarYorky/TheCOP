@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Item
 {
-
     private ItemReference _ref;
     private short _refId;
     private string _name;
@@ -12,7 +11,7 @@ public class Item
     private ItemType _itemType = ItemType.Item;
     private float _volume;
     private float _weight;
-    private byte _EquippedSlot;
+    private byte _equippedSlot;
     private EquipmentClass _equipmentClass;
     private EquipmentType _equipmentType;
     private short _maxDurability;
@@ -26,7 +25,7 @@ public class Item
     public ItemReference Ref { get => _ref; private set => _ref = value; }
     public short RefId { get => _refId; private set => _refId = value; }
     public short Number { get => _number; set => _number = value; }
-    public short Durability { get => _durability; private set => _durability = value; } //  нада добавить коэфицент прочки
+    public short Durability { get => _durability; private set => _durability = value; } //  пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public short State { get => _state; set => _state = value; }
     public short Level { get => _level; set => _level = value; }
     public List<short> Enchants { get => _enchants; set => _enchants = value; }
@@ -38,7 +37,7 @@ public class Item
     public EquipmentClass EquipmentClass { get => _equipmentClass; private set => _equipmentClass = value; }
     public EquipmentType EquipmentType { get => _equipmentType; private set => _equipmentType = value; }
     public short MaxDurability { get => _maxDurability; private set => _maxDurability = value; }
-    public byte EquippedSlot { get => _EquippedSlot; set => _EquippedSlot = value; }
+    public byte EquippedSlot { get => _equippedSlot; set => _equippedSlot = value; }
     public WeaponClass WeaponClass { get => _weaponClass; private set => _weaponClass = value; }
 
     public Item(short refId, short number)
@@ -82,11 +81,8 @@ public class Item
             }
             else if (false)
             {
-
             }
-
         }
-
     }
 
     public bool ItemEquals(Item item)
@@ -102,22 +98,18 @@ public class Item
             {
                 if (_enchants[i] != item.Enchants[i])
                     return false;
-
             }
-
         }
 
-        if ((_enchants == null && item.Enchants == null))
+        if (_enchants == null && item.Enchants == null)
         {
-            return _EquippedSlot == 0 &&
+            return _equippedSlot == 0 &&
                    _refId == item._refId &&
                    _durability == item._durability &&
                    _state == item._state &&
                    _level == item._level;
-
         }
+
         return false;
-
     }
-
 }

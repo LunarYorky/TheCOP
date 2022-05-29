@@ -15,11 +15,10 @@ public class EquipmentReference : ItemReference
     // Тут должны быть резисты
     // Тут должны быть эффекты
 
-    public EquipmentClass EquipmentClass { get { return _equipmentClass; } }
-    public EquipmentType EquipmentType { get { return _equipmentType; } }
-    public short MaxDurability { get { return _maxDurability; } }
+    public EquipmentClass EquipmentClass => _equipmentClass;
+    public EquipmentType EquipmentType => _equipmentType;
+    public short MaxDurability => _maxDurability;
 
     // Тут должны быть резисты
     // Тут должны быть эффекты
-
 }
