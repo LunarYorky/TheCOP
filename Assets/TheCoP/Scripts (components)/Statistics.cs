@@ -14,6 +14,7 @@ public class Statistics : MonoBehaviour
     // Calculated stats
     [SerializeField] private float maxHealth;
     [SerializeField] private float resresistance;
+    private float fixity = 1f;
 
     // resources
     [SerializeField] private float currentHealth;
@@ -52,6 +53,13 @@ public class Statistics : MonoBehaviour
             return itemsStorage == null ? 0 : itemsStorage.ItemsCount;
         }
     }
+
+    public float Fixity
+    {
+        get { return fixity; }
+        set { fixity = value; }
+    }
+
 
     // LoGgika------------------------------------------------------------------------------------
 
