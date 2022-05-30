@@ -18,12 +18,18 @@ namespace TheCoP.Scripts__components_.Player_scripts
             get => _speed;
             set => _speed = value;
         }
-        private Vector2 _movement;
-        public Vector2 Movement => _movement;
+        [SerializeField] private float _dashSpeed;
+        public float DashSpeed
+        {
+            get => _dashSpeed;
+            set => _dashSpeed = value;
+        }
+        public Vector2 Movement { get; private set; }
         public float Direction { get; set; }
         private StateMachine _stateMachine;
         private Animator _animator;
         private bool _wantToAttack;
+        private bool _wantToDash;
 
         private void Awake()
         {
@@ -31,11 +37,16 @@ namespace TheCoP.Scripts__components_.Player_scripts
 
             _stateMachine = new StateMachine();
 
-            var attack = new PlayerAttackState(this);
-            var movement = new PlayerMovementState(this, _animator, GetComponent<Rigidbody2D>());
+            var rigidbody2d = GetComponent<Rigidbody2D>();
 
+            var movement = new PlayerMovementState(this, _animator, rigidbody2d);
+            var attack = new PlayerAttackState(this, _animator);
+            var dash = new PlayerDashState(this, _animator, rigidbody2d);
+
+            At(movement, dash, () => _wantToDash && (Movement.x != 0 || Movement.y != 0));
             At(movement, attack, () => _wantToAttack);
             At(attack, movement, () => !_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"));
+            At(dash, movement, () => !_animator.GetCurrentAnimatorStateInfo(0).IsName("Roll"));
 
             _stateMachine.SetState(movement);
 
@@ -46,6 +57,7 @@ namespace TheCoP.Scripts__components_.Player_scripts
         {
             _stateMachine.Tick();
             _wantToAttack = false;
+            _wantToDash = false;
         }
 
         private void FixedUpdate()
@@ -63,9 +75,14 @@ namespace TheCoP.Scripts__components_.Player_scripts
             _wantToAttack = true;
         }
 
+        public void OnDash()
+        {
+            _wantToDash = true;
+        }
+
         public void OnMove(InputValue inputValue)
         {
-            _movement = inputValue.Get<Vector2>();
+            Movement = inputValue.Get<Vector2>();
         }
     }
 }

@@ -373,7 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _box: {fileID: 6293585021072724742, guid: 092c76cfbe3d45747afd428a4805f093, type: 3}
-  _speed: 5
+  _speed: 4
+  _dashSpeed: 7
 --- !u!1 &405271845
 GameObject:
   m_ObjectHideFlags: 0
