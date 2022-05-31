@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MineMenuUiContriller : MonoBehaviour
+public class MineMenuUiController : MonoBehaviour
 {
     [SerializeField]
     private VisualTreeAsset element;
@@ -11,7 +11,7 @@ public class MineMenuUiContriller : MonoBehaviour
 
         var uiDocument = GetComponent<UIDocument>();
 
-        var listHandler = new MenuListContriller(uiDocument.rootVisualElement, element);
+        var listHandler = new MenuListController(uiDocument.rootVisualElement, element);
 
     }
 

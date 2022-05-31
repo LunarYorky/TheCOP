@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class MenuListContriller
+public class MenuListController
 {
 
     VisualTreeAsset _elementTemplate;
@@ -11,7 +11,7 @@ public class MenuListContriller
     ListView menuList;
     Label testLabel;
 
-    public MenuListContriller(VisualElement root, VisualTreeAsset elementTemplate)
+    public MenuListController(VisualElement root, VisualTreeAsset elementTemplate)
     {
         EnumerateElements();
 
