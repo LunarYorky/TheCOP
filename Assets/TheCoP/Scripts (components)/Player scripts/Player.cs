@@ -33,6 +33,7 @@ namespace TheCoP.Scripts__components_.Player_scripts
 
         private void Awake()
         {
+            Direction = 180;
             _animator = GetComponentInChildren<Animator>();
 
             _stateMachine = new StateMachine();
