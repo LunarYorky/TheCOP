@@ -30,5 +30,10 @@ namespace TheCoP.Scripts__components_.Player_scripts.States
         {
             _rigidbody2D.velocity = _player.Movement * _player.Speed;
         }
+
+        public void OnExit()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+        }
     }
 }

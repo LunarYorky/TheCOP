@@ -16,7 +16,6 @@ namespace TheCoP.Scripts__components_.Player_scripts.States
             base.OnEnter();
 
             Player.PlayAnimator("Roll");
-            _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.AddForce(Player.Movement.normalized * Player.DashSpeed, ForceMode2D.Impulse);
         }
     }
