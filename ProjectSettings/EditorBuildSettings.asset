@@ -6,12 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TheCoP/Scenes/Menu.unity
-    guid: 22ab0819e1c0f8d4192118688b5b11cb
-  - enabled: 1
-    path: Assets/TheCoP/Scenes/LoadMenu.unity
-    guid: c139b6b65cb69c24da93a6ed1be3d52a
+    path: Assets/TheCoP/Scenes/TestMenu.unity
+    guid: 5aacb4c0c4aeed240ae5ace03f0cd3a2
   - enabled: 1
     path: Assets/TheCoP/Scenes/TestRoom.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 2559b303335a07442aaab1b27af95065, type: 2}

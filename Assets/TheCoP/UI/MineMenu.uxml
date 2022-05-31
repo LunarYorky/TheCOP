@@ -3,5 +3,6 @@
         <ui:VisualElement style="align-items: center; justify-content: flex-end; flex-direction: column-reverse; width: 30%; background-color: rgb(152, 152, 152); height: auto; -unity-background-scale-mode: stretch-to-fill; flex-grow: 0;">
             <ui:ListView name="MineMenu" focusable="true" fixed-item-height="41" style="flex-direction: column; align-items: auto; justify-content: flex-start; width: auto; flex-grow: 0; flex-basis: auto; flex-shrink: 1; -unity-background-scale-mode: stretch-to-fill;" />
         </ui:VisualElement>
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="TestLabel" style="align-items: center; -unity-background-scale-mode: stretch-to-fill; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); justify-content: flex-start; white-space: nowrap; -unity-text-align: upper-center; font-size: 18px;" />
     </ui:VisualElement>
 </ui:UXML>
