@@ -14,4 +14,5 @@ public class MineMenuUiContriller : MonoBehaviour
         var listHandler = new MenuListContriller(uiDocument.rootVisualElement, element);
 
     }
+
 }
