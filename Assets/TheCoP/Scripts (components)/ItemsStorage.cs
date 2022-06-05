@@ -5,10 +5,25 @@ using UnityEngine;
 
 public class ItemsStorage : MonoBehaviour, IStatsModifier
 {
-    private List<Item> storedItems;
+    [SerializeField] private short[] additems;
+
+    private List<Item> storedItems = new();
+    private int _totalMass;
+    private int _TotalVolume;
 
     public List<Item> StoredItems => storedItems;
     public int ItemsCount => storedItems.Count;
+
+    public int TotalMass => _totalMass;
+    public int TotalVolume => _TotalVolume;
+
+    public void Start()
+    {
+        foreach (var item in additems)
+        {
+            AddItem(item);
+        }
+    }
 
     public void ModifyStatistics()
     {

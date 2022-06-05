@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using TheCOP.Yorky.UI;
 
 public class MenuListController
 {
@@ -30,9 +31,9 @@ public class MenuListController
 
     void EnumerateElements()
     {
-        buttons.Add(new ButtonData("Play"));
-        buttons.Add(new ButtonData("Load"));
-        buttons.Add(new ButtonData("Exit"));
+        buttons.Add(new ButtonData("Play", () => SceneManager.LoadScene(1, LoadSceneMode.Single)));
+        buttons.Add(new ButtonData("Load", () => Debug.Log("Load button pressed")));
+        buttons.Add(new ButtonData("Exit", () => { Application.Quit(); Debug.Log("Exit button pressed"); }));
     }
 
     void FillCharacterList()
@@ -41,13 +42,7 @@ public class MenuListController
         {
             var newElement = _elementTemplate.Instantiate();
 
-            var newController = new ListViewElementController();
-
-            newElement.userData = newController;
-
-            newElement.userData = newController;
-
-            newController.SetVisualElemet(newElement);
+            newElement.userData = new ListViewElementController(newElement);
 
             return newElement;
         };
@@ -55,36 +50,26 @@ public class MenuListController
         menuList.bindItem = (item, index) =>
         {
             (item.userData as ListViewElementController).SetElemetData(buttons[index]);
+            if (index == 0)
+                item.Focus();
         };
 
         menuList.itemsSource = buttons;
-        menuList.SetSelection(0);
 
     }
 
     void OnSelect(IEnumerable<object> element)
     {
-        var selectedElement = menuList.selectedItem as ButtonData;
-        if (selectedElement == null)
+        var elementData = menuList.selectedItem as ButtonData;
+        if (elementData == null)
         {
             testLabel.text = "";
             return;
         }
 
-        testLabel.text = selectedElement.ButtonText;
+        testLabel.text = elementData.ButtonText;
 
-        if (selectedElement.ButtonText == "Exit")
-        {
-            Application.Quit();
-        }
-        else if (selectedElement.ButtonText == "Play")
-        {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
-        }
-        else if (selectedElement.ButtonText == "Load")
-        {
-
-        }
+        elementData.Action?.Invoke();
 
     }
 
