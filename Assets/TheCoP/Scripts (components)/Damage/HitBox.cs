@@ -35,7 +35,6 @@ public class HitBox : MonoBehaviour
         while (rotationTime > 0)
         {
             hiting();
-            Debug.Log("test");
 
             transform.Rotate(0, 0, Time.deltaTime * speed);
             rotationTime -= Time.deltaTime;

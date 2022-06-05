@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: New Item 1
   m_EditorClassIdentifier: 
   _id: 1
-  _name: 
-  _damage: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  _name: "1 \u0412\u043E\u043B\u0448\u0435\u0431\u043D\u0430\u044F \u043C\u0430\u0433\u0438\u044F"
+  _icon: {fileID: 1937478706, guid: 64e8c93294d7a224ba0961a4505a8ed5, type: 3}
+  _volume: 0.1
+  _weight: 3.14

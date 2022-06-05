@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Item
   m_EditorClassIdentifier: 
   _id: 0
-  _name: 
-  _icon: {fileID: 0}
+  _name: "0 \u0410\u0431\u0441\u043E\u043B\u044E\u0442\u043D\u044B\u0439 0"
+  _icon: {fileID: 1958758034, guid: 64e8c93294d7a224ba0961a4505a8ed5, type: 3}
   _volume: 0
   _weight: 0

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: New Equipment 1
   m_EditorClassIdentifier: 
   _id: 11
-  _name: 
-  _icon: {fileID: 0}
-  _volume: 0
-  _weight: 0
-  _equipmentClass: 0
+  _name: "11 \u0428\u043B\u0435\u043C\u0430\u043A"
+  _icon: {fileID: -644404885, guid: cc22856370c936d4d92452679ff0cba2, type: 3}
+  _volume: 1
+  _weight: 0.999
+  _equipmentClass: 1
   _equipmentType: 0
-  _maxDurability: 0
+  _maxDurability: 100
