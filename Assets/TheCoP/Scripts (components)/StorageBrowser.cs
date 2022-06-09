@@ -1,75 +1,75 @@
 ﻿using System.Collections.Generic;
-
+using TheCOP.Yorky.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace TheCOP.Yorky.UI
+namespace TheCoP.Scripts__components_
 {
     public class StorageBrowser : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset element;
         [SerializeField] private GameObject sourse;
-        private ItemsStorage itemsStorage;
-        private List<Item> items;
-        private ListView list;
-        private VisualElement Icon;
-        private Label itemInfoName;
-        private Label description;
-        private Label totalMass;
-        private Label totalVolume;
+        private ItemsStorage _itemsStorage;
+        private List<Item> _items;
+        private ListView _list;
+        private VisualElement _icon;
+        private Label _itemInfoName;
+        private Label _description;
+        private Label _totalMass;
+        private Label _totalVolume;
 
         public void Browse(UIDocument doc)
         {
             var root = doc.rootVisualElement;
-            list = root.Q<ListView>("ItemList");
-            Icon = root.Q<VisualElement>("ItemInfoIcon");
-            itemInfoName = root.Q<Label>("ItemInfoName");
-            description = root.Q<Label>("Description");
-            totalMass = root.Q<Label>("TotalMass");
-            totalVolume = root.Q<Label>("TotalVolume");
+            _list = root.Q<ListView>("ItemList");
+            _icon = root.Q<VisualElement>("ItemInfoIcon");
+            _itemInfoName = root.Q<Label>("ItemInfoName");
+            _description = root.Q<Label>("Description");
+            _totalMass = root.Q<Label>("TotalMass");
+            _totalVolume = root.Q<Label>("TotalVolume");
 
-            itemsStorage = sourse.GetComponent<ItemsStorage>();
-            items = itemsStorage.StoredItems;
+            _itemsStorage = sourse.GetComponent<ItemsStorage>();
+            _items = _itemsStorage.StoredItems;
 
             FillList();
 
-            totalMass.text = itemsStorage.TotalMass.ToString();
-            totalVolume.text = itemsStorage.TotalVolume.ToString();
+            _totalMass.text = _itemsStorage.TotalMass.ToString();
+            _totalVolume.text = _itemsStorage.TotalVolume.ToString();
         }
 
         private void FillList()
         {
-            list.itemsSource = items;
+            _list.itemsSource = _items;
 
-            list.makeItem = () =>
+            _list.makeItem = () =>
             {
                 var newElement = element.Instantiate();
                 newElement.userData = new ItemElementController(newElement);
                 return newElement;
             };
 
-            list.bindItem = (item, index) =>
+            _list.bindItem = (item, index) =>
             {
-                (item.userData as ItemElementController).SetItemData(items[index], () => Debug.Log("Предмет " + items[index].Name));
+                (item.userData as ItemElementController).SetItemData(_items[index], () => Debug.Log("Предмет " + _items[index].Name));
             };
 
-            list.onSelectionChange += OnSelect;
+            _list.onSelectionChange += OnSelect;
         }
 
         private void OnSelect(IEnumerable<object> selectedItems)
         {
-            var selectedItem = list.selectedItem as Item;
+            var selectedItem = _list.selectedItem as Item;
             if (selectedItem == null)
             {
-                Icon.style.backgroundImage = null;
-                itemInfoName.text = "";
-                description.text = "";
+                _icon.style.backgroundImage = null;
+                _itemInfoName.text = "";
+                _description.text = "";
                 return;
             }
 
-            Icon.style.backgroundImage = new StyleBackground(selectedItem.Icon);
-            itemInfoName.text = selectedItem.Name;
-            description.text = "Описание предмета";
+            _icon.style.backgroundImage = new StyleBackground(selectedItem.Icon);
+            _itemInfoName.text = selectedItem.Name;
+            _description.text = "Описание предмета";
         }
     }
 }

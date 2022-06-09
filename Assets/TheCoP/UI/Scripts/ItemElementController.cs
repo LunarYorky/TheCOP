@@ -4,36 +4,34 @@ namespace TheCOP.Yorky.UI
 {
     public class ItemElementController
     {
-        private VisualElement _vl;
-        private VisualElement icon;
-        private Label elemetName;
-        private Label mass;
-        private Label volume;
-        private ButtonAction buttonAction;
+        private VisualElement _icon;
+        private Label _elemetName;
+        private Label _mass;
+        private Label _volume;
+        private VoidAction _buttonAction;
 
-        public ItemElementController(VisualElement vl)
+        public ItemElementController(VisualElement visualElement)
         {
-            _vl = vl;
-            _vl.RegisterCallback<ClickEvent>(OnClick);
+            visualElement.RegisterCallback<ClickEvent>(OnClick);
 
-            icon = _vl.Q<VisualElement>("Icon");
-            elemetName = _vl.Q<Label>("Name");
-            mass = _vl.Q<Label>("Mass");
-            volume = _vl.Q<Label>("Volume");
+            _icon = visualElement.Q<VisualElement>("Icon");
+            _elemetName = visualElement.Q<Label>("Name");
+            _mass = visualElement.Q<Label>("Mass");
+            _volume = visualElement.Q<Label>("Volume");
         }
 
-        public void SetItemData(Item item, ButtonAction action)
+        public void SetItemData(Item item, VoidAction action)
         {
-            icon.style.backgroundImage = new StyleBackground(item.Icon);
-            elemetName.text = item.Name;
-            mass.text = "Mass: " + item.Weight.ToString();
-            volume.text = "Volume: " + item.Volume.ToString();
-            buttonAction = action;
+            _icon.style.backgroundImage = new StyleBackground(item.Icon);
+            _elemetName.text = item.Name;
+            _mass.text = "Mass: " + item.Weight.ToString();
+            _volume.text = "Volume: " + item.Volume.ToString();
+            _buttonAction = action;
         }
 
         private void OnClick(ClickEvent ce)
         {
-            buttonAction?.Invoke();
+            _buttonAction?.Invoke();
         }
     }
 }

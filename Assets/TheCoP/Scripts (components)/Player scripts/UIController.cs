@@ -4,15 +4,15 @@ public class UIController : MonoBehaviour
 {
     public GameObject UIManager;
 
-    private UIManager uIManager;
+    private UIManager uiManager;
 
     public void Start()
     {
-        uIManager = UIManager.GetComponent<UIManager>();
+        uiManager = UIManager.GetComponent<UIManager>();
     }
 
     public void OnMenu()
     {
-        uIManager.GameMenuSwitch();
+        uiManager.GameMenuSwitch();
     }
 }

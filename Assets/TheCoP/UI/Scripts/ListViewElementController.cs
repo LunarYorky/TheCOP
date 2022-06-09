@@ -1,39 +1,34 @@
-using System;
-
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace TheCOP.Yorky.UI
+namespace TheCoP.UI.Scripts
 {
     public class ListViewElementController
     {
-        private VisualElement _vl;
-        private Label elemetName;
-        private ButtonAction buttonAction;
+        private Label _elemetName;
+        private VoidAction _buttonAction;
 
         public ListViewElementController(VisualElement vl)
         {
-            _vl = vl;
-            _vl.RegisterCallback<ClickEvent>(OnClick);
-            elemetName = _vl.Q<Label>();
+            vl.RegisterCallback<ClickEvent>(OnClick);
+            _elemetName = vl.Q<Label>();
 
         }
 
         public void SetElemetData(ButtonData data)
         {
-            elemetName.text = data.ButtonText;
-            buttonAction = data.Action;
+            _elemetName.text = data.ButtonText;
+            _buttonAction = data.Action;
         }
 
-        public void SetElemetData(string label, ButtonAction action)
+        public void SetElemetData(string label, VoidAction action)
         {
-            elemetName.text = label;
-            buttonAction = action;
+            _elemetName.text = label;
+            _buttonAction = action;
         }
 
         private void OnClick(ClickEvent ev)
         {
-            buttonAction?.Invoke();
+            _buttonAction?.Invoke();
 
         }
     }

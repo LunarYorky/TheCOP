@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
-
+using TheCoP.Scripts__components_;
 using UnityEngine;
 
 public class ItemsStorage : MonoBehaviour, IStatsModifier
 {
     [SerializeField] private short[] additems;
 
-    private List<Item> storedItems = new();
+    private readonly List<Item> _storedItems = new();
     private int _totalMass;
-    private int _TotalVolume;
+    private int _totalVolume;
 
-    public List<Item> StoredItems => storedItems;
-    public int ItemsCount => storedItems.Count;
+    public List<Item> StoredItems => _storedItems;
+    public int ItemsCount => _storedItems.Count;
 
     public int TotalMass => _totalMass;
-    public int TotalVolume => _TotalVolume;
+    public int TotalVolume => _totalVolume;
 
     public void Start()
     {
@@ -34,7 +34,7 @@ public class ItemsStorage : MonoBehaviour, IStatsModifier
 
     public void SortItemsList()
     {
-        storedItems.Sort((x, y) => String.Compare(x.Name, y.Name));
+        _storedItems.Sort((x, y) => String.Compare(x.Name, y.Name));
     }
 
     private void calculateStats()
@@ -49,9 +49,9 @@ public class ItemsStorage : MonoBehaviour, IStatsModifier
     public bool AddItem(short id, short number = 1)
     {
         var newItem = new Item(id);
-        foreach (var item in storedItems)
+        foreach (var item in _storedItems)
         {
-            if (item.ItemEquals(newItem))
+            if (item.CheckStack(newItem))
             {
                 item.Number += number;
                 calculateStats();
@@ -59,7 +59,7 @@ public class ItemsStorage : MonoBehaviour, IStatsModifier
             }
         }
 
-        storedItems.Add(newItem);
+        _storedItems.Add(newItem);
         calculateStats();
         return true;
     }

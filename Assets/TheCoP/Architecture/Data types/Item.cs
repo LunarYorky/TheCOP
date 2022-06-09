@@ -25,7 +25,7 @@ public class Item
     public ItemReference Ref { get => _ref; private set => _ref = value; }
     public short RefId { get => _refId; private set => _refId = value; }
     public short Number { get => _number; set => _number = value; }
-    public short Durability { get => _durability; private set => _durability = value; } //  ���� �������� ��������� ������
+    public short Durability { get => _durability; private set => _durability = value; }
     public short State { get => _state; set => _state = value; }
     public short Level { get => _level; set => _level = value; }
     public List<short> Enchants { get => _enchants; set => _enchants = value; }
@@ -40,17 +40,10 @@ public class Item
     public byte EquippedSlot { get => _equippedSlot; set => _equippedSlot = value; }
     public WeaponClass WeaponClass { get => _weaponClass; private set => _weaponClass = value; }
 
-    public Item(short refId, short number)
+    public Item(short refId, short number = 1)
     {
         _ref = ResourcesManager.Items[refId];
         _number = number;
-        initStats();
-    }
-
-    public Item(short refId)
-    {
-        _ref = ResourcesManager.Items[refId];
-        _number = 1;
         initStats();
     }
 
@@ -84,41 +77,32 @@ public class Item
             }
         }
     }
-
-    public bool ItemEquals(Item item)
+    
+    /// <summary>
+    /// Only supports sorted enchants
+    /// </summary>
+    public bool CheckStack(Item item)
     {
-        if (_enchants != null && item.Enchants != null)
-        {
-            if (_enchants.Count != item.Enchants.Count)
-                return false;
+        if (_enchants == null ^ item._enchants == null)
+            return false;
 
-            _enchants.Sort();
-            item._enchants.Sort();
+        if (_enchants != null && item._enchants != null)
+        {
+            if (_enchants.Count != item._enchants.Count)
+                return false;
 
             for (int i = 0; i < _enchants.Count; i++)
             {
-                if (_enchants[i] != item.Enchants[i])
+                if (_enchants[i] != item._enchants[i])
                     return false;
             }
-
-            return _equippedSlot == 0 &&
-                   item.EquippedSlot == 0 &&
-                   _refId == item._refId &&
-                   _durability == item._durability &&
-                   _state == item._state &&
-                   _level == item._level;
         }
 
-        if (_enchants == null && item.Enchants == null)
-        {
-            return _equippedSlot == 0 &&
-                   item.EquippedSlot == 0 &&
-                   _refId == item._refId &&
-                   _durability == item._durability &&
-                   _state == item._state &&
-                   _level == item._level;
-        }
-
-        return false;
+        return _equippedSlot == 0 &&
+               item.EquippedSlot == 0 &&
+               _refId == item._refId &&
+               _durability == item._durability &&
+               _state == item._state &&
+               _level == item._level;
     }
 }
