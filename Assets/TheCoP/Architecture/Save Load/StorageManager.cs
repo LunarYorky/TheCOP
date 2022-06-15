@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
-
+using TheCoP.Scripts__components_;
 using UnityEngine;
 
 public class StorageManager
@@ -46,8 +46,9 @@ public class StorageManager
         else
         {
             var stats = player.GetComponent<Statistics>();
-            saveData.Positions[0] = player.transform.position.x;
-            saveData.Positions[1] = player.transform.position.y;
+            var position = player.transform.position;
+            saveData.Positions[0] = position.x;
+            saveData.Positions[1] = position.y;
             saveData.IdStatusItemCount[0] = stats.Id;
             saveData.IdStatusItemCount[1] = stats.Status;
             saveData.IdStatusItemCount[2] = stats.ItemsCount;
@@ -56,14 +57,14 @@ public class StorageManager
         int _i = 2;
         int _ii = 3;
         int allItemsCount = 0;
-        Statistics statistics;
         foreach (var item in objs)
         {
-            saveData.Positions[_i] = item.transform.position.x;
+            var position = item.transform.position;
+            saveData.Positions[_i] = position.x;
             _i++;
-            saveData.Positions[_i] = item.transform.position.y;
+            saveData.Positions[_i] = position.y;
             _i++;
-            statistics = item.GetComponent<Statistics>();
+            var statistics = item.GetComponent<Statistics>();
             saveData.IdStatusItemCount[_ii] = statistics.Id;
             _ii++;
             saveData.IdStatusItemCount[_ii] = statistics.Status;
@@ -75,11 +76,10 @@ public class StorageManager
 
         saveData.Items = new short[allItemsCount][];
         //saveData.Equipped = new bool[allItemsCount];
-        ItemsStorage storage;
         int _iii = 0;
         foreach (var obj in objs)
         {
-            storage = obj.GetComponent<ItemsStorage>();
+            var storage = obj.GetComponent<ItemsStorage>();
             if (storage == null)
                 continue;
 
