@@ -387,7 +387,7 @@ MonoBehaviour:
   _box: {fileID: 6293585021072724742, guid: 092c76cfbe3d45747afd428a4805f093, type: 3}
   _speed: 4
   _dashSpeed: 7
-  _dashStamina: 0
+  _dashStamina: 10
 --- !u!114 &242893996
 MonoBehaviour:
   m_ObjectHideFlags: 0

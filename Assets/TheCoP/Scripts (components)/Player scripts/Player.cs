@@ -19,6 +19,8 @@ namespace TheCoP.Scripts__components_.Player_scripts
             set => _speed = value;
         }
         [SerializeField] private float _dashSpeed;
+        [SerializeField] private int _dashStamina;
+
         public float DashSpeed
         {
             get => _dashSpeed;
@@ -35,6 +37,7 @@ namespace TheCoP.Scripts__components_.Player_scripts
         {
             Direction = 180;
             _animator = GetComponentInChildren<Animator>();
+            var _statistics = GetComponent<Statistics>();
 
             _stateMachine = new StateMachine();
 
@@ -44,7 +47,7 @@ namespace TheCoP.Scripts__components_.Player_scripts
             var attack = new PlayerAttackState(this, _animator);
             var dash = new PlayerDashState(this, _animator, rigidbody2d);
 
-            At(movement, dash, () => _wantToDash && (Movement.x != 0 || Movement.y != 0));
+            At(movement, dash, () => _wantToDash && (Movement.x != 0 || Movement.y != 0) && _statistics.UseUpStamina(_dashStamina));
             At(movement, attack, () => _wantToAttack);
             At(attack, movement, () => !_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"));
             At(dash, movement, () => !_animator.GetCurrentAnimatorStateInfo(0).IsName("Roll"));

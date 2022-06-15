@@ -27,7 +27,7 @@ namespace TheCoP.Scripts__components_.Player_scripts.States
             var hitBoxComponent = hitBox.GetComponent<HitBox>();
             hitBoxComponent.rotationAngle = RotationAngle;
             hitBoxComponent.rotationTime = RotationTime;
-            hitBoxComponent.damage = Damage;
+            // hitBoxComponent.damage = Damage;
         }
     }
 }

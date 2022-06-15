@@ -1,81 +1,247 @@
+using System;
+using System.Collections;
+using TheCoP.Architecture.Data_types;
+using TheCoP.Architecture.Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class Statistics : MonoBehaviour
+namespace TheCoP.Scripts__components_
 {
-    // Basic Stats
-    private int _basicHealth;
-    private int _basicAdaptability;
-    private int _basicDexterity;
-    private int _basicStrength;
-    private int _id;
-    private int _status;
-
-    // Calculated stats
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float resresistance;
-    private float fixity = 1f;
-
-    // resources
-    [SerializeField] private float currentHealth;
-
-    //gprops-------------------------------------------------------------------------------------
-
-    public float Resresistance
+    public class Statistics : MonoBehaviour
     {
-        get { return resresistance; }
-        set { resresistance = value; }
-    }
+        public float test;
+        private int _id;
+        private int _status;
 
-    public float CurrentHealth
-    {
-        get { return currentHealth; }
-        private set { currentHealth = value < 0f ? 0f : value; }
-    }
+        [SerializeField] private Characteristics _basicCharacteristics;
 
-    public int Id
-    {
-        get { return _id; }
-        private set { _id = value; }
-    }
-
-    public int Status
-    {
-        get { return _status; }
-        private set { _status = value; }
-    }
-
-    public int ItemsCount
-    {
-        get
+        public Characteristics BasicCharacteristics
         {
-            var itemsStorage = GetComponent<ItemsStorage>();
-            return itemsStorage == null ? 0 : itemsStorage.ItemsCount;
+            get => _basicCharacteristics;
+            set
+            {
+                _basicCharacteristics = value;
+                CalculateStats();
+            }
         }
-    }
 
-    public float Fixity
-    {
-        get { return fixity; }
-        set { fixity = value; }
-    }
+        // Calculated stats
+        private Characteristics _generalCharacteristics;
+
+        private float _maxHealth;
+        private float _MaxStamina;
+        private float _staminaRegen;
+
+        public PhysicalResistance PhysicalResistance { get; private set; }
+
+        // resources
+        [Header("Resources")] [SerializeField] private float _currentHealth;
+        [SerializeField] private float _currentStamina;
+
+        //Extras
+        private Characteristics _extraCharacteristics;
+
+        private PhysicalResistance _extraPhysicalResistance;
+
+        public float MaxStamina
+        {
+            get => _MaxStamina;
+            private set => _MaxStamina = value;
+        }
+
+        public float MaxHealth
+        {
+            get => _maxHealth;
+            private set => _maxHealth = value;
+        }
+
+        public float StaminaRegen
+        {
+            get => _staminaRegen;
+            private set => _staminaRegen = value;
+        }
+
+        public int Id
+        {
+            get { return _id; }
+            private set { _id = value; }
+        }
+
+        public int Status
+        {
+            get { return _status; }
+            private set { _status = value; }
+        }
+
+        public int ItemsCount
+        {
+            get
+            {
+                var itemsStorage = GetComponent<ItemsStorage>();
+                return itemsStorage == null ? 0 : itemsStorage.ItemsCount;
+            }
+        }
+
+        public float CurrentStamina
+        {
+            get => _currentStamina;
+            set
+            {
+                if (value > 0)
+                    _currentStamina = value > _MaxStamina ? _MaxStamina : value;
+
+                else
+                    _currentHealth = 0f;
+            }
+        }
+
+        public float CurrentHealth
+        {
+            get { return _currentHealth; }
+            set
+            {
+                if (value > 0f)
+                    _currentHealth = value > MaxHealth ? MaxHealth : value;
+
+                else
+                    _currentHealth = 0f;
+            }
+        }
+
+        public Characteristics ExtraCharacteristics
+        {
+            get => _extraCharacteristics;
+            set => _extraCharacteristics = value;
+        }
+
+        public PhysicalResistance ExtraPhysicalResistance
+        {
+            get => _extraPhysicalResistance;
+            set => _extraPhysicalResistance = value;
+        }
+
+        public Characteristics GeneralCharacteristics
+        {
+            get { return _generalCharacteristics; }
+        }
+        
+        public byte GetStat(CharacteristicsType type)
+        {
+            return type switch
+            {
+                CharacteristicsType.Strength => _basicCharacteristics.Strength,
+                CharacteristicsType.Dexterity => _basicCharacteristics.Dexterity,
+                CharacteristicsType.Endurance => _basicCharacteristics.Endurance,
+                CharacteristicsType.Constitution => _basicCharacteristics.Constitution,
+                CharacteristicsType.Intelligence => _basicCharacteristics.Intelligence,
+                CharacteristicsType.Faith => _basicCharacteristics.Faith,
+                CharacteristicsType.Perception => _basicCharacteristics.Perception,
+                CharacteristicsType.Fortune => _basicCharacteristics.Fortune,
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
+        }
+
+        public float GetStat(StatType statType)
+        {
+            return statType switch
+            {
+                StatType.MaxHealth => MaxHealth,
+                StatType.CurrentHealth => CurrentHealth,
+                StatType.MaxStamina => MaxStamina,
+                StatType.CurrentStamina => CurrentStamina,
+                StatType.staminaRegen => StaminaRegen,
+                _ => throw new ArgumentOutOfRangeException(nameof(statType), statType, null)
+            };
+        }
+
+        // LoGgika------------------------------------------------------------------------------------
+
+        private void Start()
+        {
+            CalculateStats();
+            StartCoroutine(StaminaRegenerator());
+        }
+
+        private IEnumerator StaminaRegenerator()
+        {
+            while (true)
+            {
+                if (CurrentStamina < MaxStamina)
+                    CurrentStamina += 1;
+
+                yield return new WaitForSeconds(_staminaRegen);
+            }
+        }
+
+        public void CalculateStats()
+        {
+            _extraCharacteristics = new();
+            _extraPhysicalResistance = new();
+
+            ExecuteEvents.Execute<IStatsModifier>(gameObject, null, (x, y) => x.ModifyStatistics());
+
+            _generalCharacteristics = _basicCharacteristics + _extraCharacteristics;
+
+            var temp = 10 * GeneralCharacteristics.Constitution;
+            _maxHealth = 100 + temp;
+            _MaxStamina = 100 + 10 * GeneralCharacteristics.Endurance;
+            _staminaRegen = test;
+
+            PhysicalResistance = new PhysicalResistance(50 + temp, 50 + temp, 50 + temp);
+        }
 
 
-    // LoGgika------------------------------------------------------------------------------------
+        public bool UseUpStamina(int value)
+        {
+            if (_currentStamina == 0)
+                return false;
+            CurrentStamina -= value;
+            return true;
+        }
 
-    void Update()
-    {
-        if (currentHealth == 0)
-            Destroy(gameObject);
-    }
+        public void Increment(CharacteristicsType type)
+        {
+            if (type == CharacteristicsType.Strength)
+                _basicCharacteristics.Strength++;
+            else if (type == CharacteristicsType.Dexterity)
+                _basicCharacteristics.Dexterity++;
+            else if (type == CharacteristicsType.Endurance)
+                _basicCharacteristics.Endurance++;
+            else if (type == CharacteristicsType.Constitution)
+                _basicCharacteristics.Constitution++;
+            else if (type == CharacteristicsType.Intelligence)
+                _basicCharacteristics.Intelligence++;
+            else if (type == CharacteristicsType.Faith)
+                _basicCharacteristics.Faith++;
+            else if (type == CharacteristicsType.Perception)
+                _basicCharacteristics.Perception++;
+            else if (type == CharacteristicsType.Fortune) 
+                _basicCharacteristics.Fortune++;
+            
+            CalculateStats();
+        }
 
-    public void CalculateStats()
-    {
-        ExecuteEvents.Execute<IStatsModifier>(gameObject, null, (x, y) => x.ModifyStatistics());
-    }
-
-    public void DealingDamage(float damage)
-    {
-        CurrentHealth -= damage * resresistance;
+        public void Decrement(CharacteristicsType type)
+        {
+            if (type == CharacteristicsType.Strength)
+                _basicCharacteristics.Strength--;
+            else if (type == CharacteristicsType.Dexterity)
+                _basicCharacteristics.Dexterity--;
+            else if (type == CharacteristicsType.Endurance)
+                _basicCharacteristics.Endurance--;
+            else if (type == CharacteristicsType.Constitution)
+                _basicCharacteristics.Constitution--;
+            else if (type == CharacteristicsType.Intelligence)
+                _basicCharacteristics.Intelligence--;
+            else if (type == CharacteristicsType.Faith)
+                _basicCharacteristics.Faith--;
+            else if (type == CharacteristicsType.Perception)
+                _basicCharacteristics.Perception--;
+            else if (type == CharacteristicsType.Fortune)
+                _basicCharacteristics.Fortune--;
+            
+            CalculateStats();
+        }
     }
 }

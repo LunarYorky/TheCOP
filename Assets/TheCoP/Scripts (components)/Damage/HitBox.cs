@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using TheCoP.Scripts__components_;
 using UnityEngine;
 
 public class HitBox : MonoBehaviour
@@ -30,6 +30,7 @@ public class HitBox : MonoBehaviour
         StartCoroutine(Rotator());
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator Rotator()
     {
         while (rotationTime > 0)
@@ -65,7 +66,7 @@ public class HitBox : MonoBehaviour
                 //логика отправки сообщения о попадании
                 var stats = targets[element].GetComponent<Statistics>();
                 if (stats != null)
-                    stats.DealingDamage(damage);
+                    Debug.Log("Hit");
             }
 
             targets.RemoveAt(element);
