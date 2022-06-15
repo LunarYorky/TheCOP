@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 971930958432503643}
   - component: {fileID: -5622125069206515909}
   - component: {fileID: 5591374032552971123}
+  - component: {fileID: 790308947706572103}
   m_Layer: 5
   m_Name: GameMenu
   m_TagString: Untagged
@@ -62,6 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ee723d8ea55904c87884b663848a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPanelAsset: {fileID: 9197481963319205126, guid: 7f82fabf4cf3e5e4ca2b0aa98091e810, type: 3}
+  inventoryAsset: {fileID: 9197481963319205126, guid: e5e770f60809eb1468fd49224ac1dc27, type: 3}
+  statisticsAsset: {fileID: 9197481963319205126, guid: f16562e9170cba742ba857a4f6907ca4, type: 3}
 --- !u!114 &5591374032552971123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,4 +79,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 9197481963319205126, guid: a3ff07c2dc239c042bf33c415e2e2f33, type: 3}
+  sourse: {fileID: 0}
+--- !u!114 &790308947706572103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971930958432503640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c3964fd6444e2cbe399166ff86d85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statElementAsset: {fileID: 9197481963319205126, guid: 237b3e9872b98fe4b8df79b919508b3b, type: 3}
   sourse: {fileID: 0}

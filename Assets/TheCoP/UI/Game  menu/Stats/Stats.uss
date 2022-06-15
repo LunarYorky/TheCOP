@@ -1,0 +1,33 @@
+.Stat {
+    flex-direction: row;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-width: 1px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Stat #StatName {
+    -unity-font-style: normal;
+    font-size: 12px;
+}
+
+.Stat #Up {
+    background-image: resource('UI/32835_left_64x64 (2)');
+}
+
+.Stat #Down {
+    background-image: resource('UI/32835_left_64x64');
+}
+
+.Stat #Value {
+    font-size: 12px;
+    -unity-text-align: upper-right;
+}
+
+.Arrow {
+    width: 16px;
+    height: 16px;
+}

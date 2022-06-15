@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Stat" class="Stat">
+        <ui:Label display-tooltip-when-elided="true" name="StatName" text="Null:" />
+        <ui:Label text="Null" display-tooltip-when-elided="true" name="Value" />
+        <ui:VisualElement name="Down" class="Arrow" />
+        <ui:VisualElement name="Up" class="Arrow" />
+    </ui:VisualElement>
+</ui:UXML>

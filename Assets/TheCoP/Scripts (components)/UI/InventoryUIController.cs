@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-
+using TheCoP.Scripts__components_;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace TheCOP.Yorky.UI
 {
-    public class StorageBrowser : MonoBehaviour
+    public class InventoryUIController : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset element;
         [SerializeField] private GameObject sourse;

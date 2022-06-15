@@ -1,5 +1,5 @@
 {
-    "name": "Test room 2022",
+    "name": "TheCoP",
     "maps": [
         {
             "name": "Player",
@@ -45,6 +45,15 @@
                     "name": "Menu",
                     "type": "Button",
                     "id": "f6ad0724-5a3b-4a4b-9937-89cbaaa72cb2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Test",
+                    "type": "Button",
+                    "id": "0f767633-7d14-45b0-9885-2ef1cd15278d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -291,6 +300,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0936d63d-9a0f-417c-95ae-bb627393f034",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
