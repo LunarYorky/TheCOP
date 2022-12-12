@@ -123,6 +123,29 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39525717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 938757253028965776, guid: df59d515bd8f15b488448b0fe463a552, type: 3}
+  m_PrefabInstance: {fileID: 6453953475834196660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &39525723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39525717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef30a3fb6e55403f9dec09021e3b520f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  startAngle: -85
+  rotationAngle: 150
+  rotationTime: 0.2
+  damage: 2
+  hitBox: {fileID: 6293585021072724742, guid: 092c76cfbe3d45747afd428a4805f093, type: 3}
 --- !u!1001 &92726293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,7 +322,7 @@ GameObject:
   - component: {fileID: 242893988}
   - component: {fileID: 242893994}
   - component: {fileID: 242893993}
-  - component: {fileID: 242893995}
+  - component: {fileID: 242893996}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -331,7 +354,71 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44186785-1903-42ae-8949-b951196a6fd2
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb154770-0fbb-48f3-98bb-e00005e5e4ab
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1aa64714-4fa5-42fe-b5df-019438eb8c1d
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 59efcb88-004d-4b4e-8f1f-666d05a24f89
+    m_ActionName: Player/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 67c2a18f-de8e-44f0-9683-aefd0c1e55ab
+    m_ActionName: Player/Save[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: feb95357-b519-4fed-b7b6-1028492596a1
+    m_ActionName: Player/Load[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f4b3025-87ed-4b4e-8370-af8e607ace23
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1bc9d416-fd2c-4807-a95f-42f979f5fd05
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f072c46e-ffc1-440b-be99-07be3fb885b2
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4e7446c4-a9c2-4175-8ae5-50899eadf963
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29c5b431-af4c-456a-9a0c-ed31e18b1726
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 57e04391-7883-4f04-b9c0-6c25007c0da1
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15a8c305-4dd7-49b1-938f-a2d077c24ff8
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06924384-4321-42d6-98f1-a6240ca73d8d
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1dc901b0-051b-4fad-b496-e18347e3f27c
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 05b1e55f-7867-485a-9b9a-dfd5be34b3e5
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -417,7 +504,7 @@ MonoBehaviour:
   maxHealth: 10
   resresistance: 0
   currentHealth: 1
---- !u!114 &242893995
+--- !u!114 &242893996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -426,12 +513,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 242893985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa7b463c355474cbcd8486138290f5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 70773ad894fa4678ae61bc7cdd844f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _box: {fileID: 6293585021072724742, guid: 092c76cfbe3d45747afd428a4805f093, type: 3}
-  _speed: 4
-  _dashSpeed: 7
+  speed: 4
+  startAngle: -85
+  rotationAngle: 150
+  rotationTime: 0.2
+  damage: 10
+  hitBox: {fileID: 6293585021072724742, guid: 092c76cfbe3d45747afd428a4805f093, type: 3}
+  dashSpeed: 7
 --- !u!1 &405271845
 GameObject:
   m_ObjectHideFlags: 0
