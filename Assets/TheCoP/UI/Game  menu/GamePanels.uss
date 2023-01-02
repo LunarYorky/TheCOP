@@ -19,9 +19,13 @@
 }
 
 .TopOfPanel {
-    width: 204px;
-    height: 18px;
-    background-image: resource('UI/TopRamka');
+    background-image: url('project://database/Assets/TheCoP/UI/Game%20%20menu/Stats/n7u5ebrwavrtgf.png?fileID=2800000&guid=8fb9ad233f498074696cbf18aee5dba7&type=3#n7u5ebrwavrtgf');
+    width: 300px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    font-size: 18px;
 }
 
 .BottomOfPanel {
@@ -31,6 +35,4 @@
 }
 
 .MidOfPanel {
-    width: 200px;
-    background-image: resource('UI/MidRamka');
 }

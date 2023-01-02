@@ -8,6 +8,7 @@ namespace TheCoP.Scripts__components_.UI
 {
     public class GameSelectPanelController : MonoBehaviour
     {
+        [SerializeField] private GameObject overlay;
         [SerializeField] private VisualTreeAsset selectPanelAsset;
         [SerializeField] private VisualTreeAsset inventoryAsset;
         [SerializeField] private VisualTreeAsset statisticsAsset;
@@ -27,7 +28,6 @@ namespace TheCoP.Scripts__components_.UI
 
         public void Switch()
         {
-            Debug.Log(stack.Count);
             if (stack.Count == 0)
             {
                 _uIDocument = GetComponent<UIDocument>();
@@ -35,6 +35,7 @@ namespace TheCoP.Scripts__components_.UI
                 _statisticsUIController = GetComponent<StatisticsUIController>();
 
                 gameObject.SetActive(true);
+                overlay.SetActive(false);
 
                 stack.Clear();
                 stack.Push(Menus.SelectPanel);
@@ -51,6 +52,7 @@ namespace TheCoP.Scripts__components_.UI
                 else
                 {
                     gameObject.SetActive(false);
+                    overlay.SetActive(true);
                 }
             }
         }

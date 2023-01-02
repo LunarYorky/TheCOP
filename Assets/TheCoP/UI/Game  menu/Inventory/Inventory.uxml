@@ -1,31 +1,31 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/TheCoP/UI/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=35474403703fe584faaa07cac1337bb9&amp;type=3#Inventory" />
+    <Style src="project://database/Assets/TheCoP/UI/Game%20%20menu/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=35474403703fe584faaa07cac1337bb9&amp;type=3#Inventory" />
     <ui:VisualElement style="align-items: center; justify-content: center; flex-grow: 1;">
         <ui:VisualElement name="Inventory" style="height: 648px; width: 1152px;">
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; background-image: url(&apos;project://database/Assets/TheCoP/UI/Inventory/invent%20UI%20background.png?fileID=2800000&amp;guid=6ed791a674dbbbe4e82848c458d1a856&amp;type=3#invent UI background&apos;);">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; background-image: url(&apos;project://database/Assets/TheCoP/UI/Game%20%20menu/Inventory/invent%20UI%20background.png?fileID=2800000&amp;guid=6ed791a674dbbbe4e82848c458d1a856&amp;type=3#invent UI background&apos;);">
                 <ui:VisualElement name="InventoryPage" class="page" style="margin-right: 5px; flex-grow: 1; flex-basis: 0;">
-                    <ui:VisualElement name="Bookmarks" style="flex-direction: row; justify-content: center;">
+                    <ui:VisualElement name="Bookmarks" style="flex-direction: row; justify-content: center; margin-bottom: 15px;">
                         <ui:VisualElement name="Bookmark" />
                         <ui:VisualElement name="Bookmark" />
                         <ui:VisualElement name="Bookmark" />
                         <ui:VisualElement name="Bookmark" />
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; margin-left: 5px; margin-right: 5px; margin-bottom: 5px; padding-left: 30px; padding-right: 30px; padding-top: 40px; padding-bottom: 30px; background-image: url(&apos;project://database/Assets/TheCoP/UI/Inventory/invent%20UI%20list.png?fileID=2800000&amp;guid=b3acbf130f9f70c4bb0fb273a99640a3&amp;type=3#invent UI list&apos;);">
+                    <ui:VisualElement style="flex-grow: 1; margin-left: 5px; margin-right: 5px; margin-bottom: 5px; padding-left: 40px; padding-right: 40px; padding-top: 40px; padding-bottom: 30px; background-image: url(&apos;project://database/Assets/TheCoP/UI/Game%20%20menu/Inventory/invent%20UI%20list.png?fileID=2800000&amp;guid=b3acbf130f9f70c4bb0fb273a99640a3&amp;type=3#invent UI list&apos;);">
                         <ui:ListView focusable="true" name="ItemList" virtualization-method="DynamicHeight" style="padding-left: 10px; padding-right: 10px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="InformationPage" class="page" style="flex-grow: 1; flex-basis: 0;">
                     <ui:VisualElement style="flex-grow: 1; flex-direction: column-reverse;">
                         <ui:VisualElement style="height: 100px; flex-direction: row;">
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
-                                <ui:Label text="Mass:" display-tooltip-when-elided="true" />
-                                <ui:VisualElement style="background-image: url(&apos;project://database/Assets/TheCoP/UI/Inventory/invent%20UI%20img.png?fileID=2800000&amp;guid=88bd5235cf6f2ce49b3edaadce143914&amp;type=3#invent UI img&apos;); width: 64px; height: 64px; flex-basis: auto; justify-content: center;">
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center;">
+                                <ui:VisualElement style="background-image: url(&apos;project://database/Assets/TheCoP/UI/Game%20%20menu/Inventory/invent%20UI%20img.png?fileID=2800000&amp;guid=88bd5235cf6f2ce49b3edaadce143914&amp;type=3#invent UI img&apos;); width: 64px; height: 64px; flex-basis: auto; justify-content: center;">
+                                    <ui:Label text="Mass:" display-tooltip-when-elided="true" style="-unity-text-align: upper-center;" />
                                     <ui:Label text="00" display-tooltip-when-elided="true" name="TotalMass" style="-unity-text-align: upper-center;" />
                                 </ui:VisualElement>
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
-                                <ui:Label text="Volume:" display-tooltip-when-elided="true" enable-rich-text="false" />
-                                <ui:VisualElement style="background-image: url(&apos;project://database/Assets/TheCoP/UI/Inventory/invent%20UI%20img.png?fileID=2800000&amp;guid=88bd5235cf6f2ce49b3edaadce143914&amp;type=3#invent UI img&apos;); width: 64px; height: 64px; flex-basis: auto; justify-content: center;">
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center;">
+                                <ui:VisualElement style="background-image: url(&apos;project://database/Assets/TheCoP/UI/Game%20%20menu/Inventory/invent%20UI%20img.png?fileID=2800000&amp;guid=88bd5235cf6f2ce49b3edaadce143914&amp;type=3#invent UI img&apos;); width: 64px; height: 64px; flex-basis: auto; justify-content: center;">
+                                    <ui:Label text="Volume:" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-text-align: upper-center;" />
                                     <ui:Label text="00" display-tooltip-when-elided="true" name="TotalVolume" style="-unity-text-align: upper-center;" />
                                 </ui:VisualElement>
                             </ui:VisualElement>
@@ -39,7 +39,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="Tooltip" class="Tooltip">
-                <ui:Label text="Label" display-tooltip-when-elided="true" />
+                <ui:Label text="Управление:" display-tooltip-when-elided="true" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

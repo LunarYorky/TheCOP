@@ -1,8 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/TheCoP/UI/Game%20%20menu/Stats/Stats.uss?fileID=7433441132597879392&amp;guid=3829a1b5b97cd8f4e8afb2966a3b2bac&amp;type=3#Stats" />
     <ui:VisualElement name="Stat" class="Stat">
         <ui:Label display-tooltip-when-elided="true" name="StatName" text="Null:" />
-        <ui:Label text="Null" display-tooltip-when-elided="true" name="Value" />
-        <ui:VisualElement name="Down" class="Arrow" />
-        <ui:VisualElement name="Up" class="Arrow" />
+        <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: flex-end; flex-grow: 1;">
+            <ui:Label text="Null" display-tooltip-when-elided="true" name="Value" />
+            <ui:VisualElement name="Down" class="Arrow" />
+            <ui:VisualElement name="Up" class="Arrow" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

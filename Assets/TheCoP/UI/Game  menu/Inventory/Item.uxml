@@ -4,7 +4,7 @@
             <ui:VisualElement name="Icon" style="background-color: rgb(255, 129, 129); width: 32px; height: 32px; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
             <ui:Label text="Label" display-tooltip-when-elided="true" name="Name" />
         </ui:VisualElement>
-        <ui:VisualElement style="flex-direction: row; justify-content: flex-end;">
+        <ui:VisualElement style="flex-direction: row; justify-content: flex-end; -unity-text-align: middle-left;">
             <ui:Label text="Label" display-tooltip-when-elided="true" name="Mass" />
             <ui:Label text="Label" display-tooltip-when-elided="true" name="Volume" />
         </ui:VisualElement>
