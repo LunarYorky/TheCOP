@@ -5,7 +5,7 @@ namespace TheCoP.UI.Scripts
     public class ListViewElementController
     {
         private Label _elemetName;
-        private VoidAction _buttonAction;
+        private ButtonAction _buttonAction;
 
         public ListViewElementController(VisualElement vl)
         {
@@ -20,7 +20,7 @@ namespace TheCoP.UI.Scripts
             _buttonAction = data.Action;
         }
 
-        public void SetElemetData(string label, VoidAction action)
+        public void SetElemetData(string label, ButtonAction action)
         {
             _elemetName.text = label;
             _buttonAction = action;

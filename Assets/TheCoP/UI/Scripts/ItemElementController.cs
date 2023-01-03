@@ -8,7 +8,7 @@ namespace TheCOP.Yorky.UI
         private Label _elemetName;
         private Label _mass;
         private Label _volume;
-        private VoidAction _buttonAction;
+        private ButtonAction _buttonAction;
 
         public ItemElementController(VisualElement visualElement)
         {
@@ -20,7 +20,7 @@ namespace TheCOP.Yorky.UI
             _volume = visualElement.Q<Label>("Volume");
         }
 
-        public void SetItemData(Item item, VoidAction action)
+        public void SetItemData(Item item, ButtonAction action)
         {
             _icon.style.backgroundImage = new StyleBackground(item.Icon);
             _elemetName.text = item.Name;

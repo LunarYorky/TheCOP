@@ -4,11 +4,11 @@ namespace TheCOP.Yorky.UI
 {
     public class VisualElementController
     {
-        private VoidAction _action;
+        private ButtonAction _action;
 
-        public VoidAction Action { set => _action = value; }
+        public ButtonAction Action { set => _action = value; }
 
-        public VisualElementController(VisualElement vl, VoidAction action)
+        public VisualElementController(VisualElement vl, ButtonAction action)
         {
             vl.RegisterCallback<ClickEvent>(OnClick);
             _action = action;
