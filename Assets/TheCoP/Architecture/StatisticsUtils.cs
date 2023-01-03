@@ -5,6 +5,7 @@ namespace TheCoP.Architecture
 {
     public static class StatisticsUtils
     {
+        //TODO: Yorky's shiza. Use this class later
         public static void DealingDamage(Statistics statistics, in PhysicalDamage damage)
         {
             statistics.CurrentHealth -= lol(damage.Sleshing, statistics.PhysicalResistance.Sleshing);
@@ -12,11 +13,11 @@ namespace TheCoP.Architecture
             statistics.CurrentHealth -= lol(damage.Crushing, statistics.PhysicalResistance.Crushing);
         }
 
-        private static int lol(in int damage,in int armor)
+        private static int lol(in int damage, in int armor)
         {
             if (damage > armor)
                 return damage;
-            return damage*damage/armor;
+            return damage * damage / armor;
         }
     }
 }

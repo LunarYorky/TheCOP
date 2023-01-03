@@ -1,17 +1,16 @@
 ﻿using System;
-using TheCoP.Architecture.Data_types;
 using TheCoP.Architecture.Enums;
-using TheCOP.Yorky.UI;
-using UnityEditor.Timeline.Actions;
+using TheCoP.UI.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
-namespace TheCoP.Scripts__components_
+namespace TheCoP.Scripts__components_.UI
 {
     public class StatisticsUIController : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset statElementAsset;
-        [SerializeField] private GameObject sourse;
+        [SerializeField] private GameObject source;
 
         private Statistics _statistics;
         private VisualElement _characteristicsList;
@@ -25,7 +24,7 @@ namespace TheCoP.Scripts__components_
             _characteristicsList = root.Q<VisualElement>("CharacteristicsList");
             _statsList = root.Q<VisualElement>("StatisticsList");
 
-            _statistics = sourse.GetComponent<Statistics>();
+            _statistics = source.GetComponent<Statistics>();
 
             FillStatsList();
             

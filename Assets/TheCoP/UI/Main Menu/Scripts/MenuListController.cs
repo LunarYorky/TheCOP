@@ -1,76 +1,77 @@
 using System.Collections.Generic;
+using TheCoP.UI.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using TheCOP.Yorky.UI;
 
-public class MenuListController
+namespace TheCoP.UI.Main_Menu.Scripts
 {
-
-    VisualTreeAsset _elementTemplate;
-
-    ListView menuList;
-    Label testLabel;
-
-    public MenuListController(VisualElement root, VisualTreeAsset elementTemplate)
+    public class MenuListController
     {
-        EnumerateElements();
+        private readonly VisualTreeAsset _elementTemplate;
+        private readonly List<ButtonData> _buttons = new();
 
-        _elementTemplate = elementTemplate;
+        private readonly ListView _menuList;
+        private readonly Label _testLabel;
 
-        menuList = root.Q<ListView>("MineMenu");
-
-        testLabel = root.Q<Label>("TestLabel");
-
-        FillCharacterList();
-
-        menuList.onItemsChosen += OnSelect;
-    }
-
-    List<ButtonData> buttons = new();
-
-    void EnumerateElements()
-    {
-        buttons.Add(new ButtonData("Play", () => SceneManager.LoadScene(1, LoadSceneMode.Single)));
-        buttons.Add(new ButtonData("Load", () => Debug.Log("Load button pressed")));
-        buttons.Add(new ButtonData("Exit", () => { Application.Quit(); Debug.Log("Exit button pressed"); }));
-    }
-
-    void FillCharacterList()
-    {
-        menuList.makeItem = () =>
+        public MenuListController(VisualElement root, VisualTreeAsset elementTemplate)
         {
-            var newElement = _elementTemplate.Instantiate();
+            EnumerateElements();
 
-            newElement.userData = new ListViewElementController(newElement);
+            _elementTemplate = elementTemplate;
 
-            return newElement;
-        };
+            _menuList = root.Q<ListView>("MineMenu");
 
-        menuList.bindItem = (item, index) =>
-        {
-            (item.userData as ListViewElementController).SetElemetData(buttons[index]);
-            if (index == 0)
-                item.Focus();
-        };
+            _testLabel = root.Q<Label>("TestLabel");
 
-        menuList.itemsSource = buttons;
+            FillCharacterList();
 
-    }
-
-    void OnSelect(IEnumerable<object> element)
-    {
-        var elementData = menuList.selectedItem as ButtonData;
-        if (elementData == null)
-        {
-            testLabel.text = "";
-            return;
+            _menuList.onItemsChosen += OnSelect;
         }
 
-        testLabel.text = elementData.ButtonText;
+        private void EnumerateElements()
+        {
+            _buttons.Add(new ButtonData("Play", () => SceneManager.LoadScene(1, LoadSceneMode.Single)));
+            _buttons.Add(new ButtonData("Load", () => Debug.Log("Load button pressed")));
+            _buttons.Add(new ButtonData("Exit", () => { Application.Quit(); Debug.Log("Exit button pressed"); }));
+        }
 
-        elementData.Action?.Invoke();
+        private void FillCharacterList()
+        {
+            _menuList.makeItem = () =>
+            {
+                var newElement = _elementTemplate.Instantiate();
+
+                newElement.userData = new ListViewElementController(newElement);
+
+                return newElement;
+            };
+
+            _menuList.bindItem = (item, index) =>
+            {
+                (item.userData as ListViewElementController)?.SetElementData(_buttons[index]);
+                if (index == 0)
+                    item.Focus();
+            };
+
+            _menuList.itemsSource = _buttons;
+
+        }
+
+        private void OnSelect(IEnumerable<object> element)
+        {
+            var elementData = _menuList.selectedItem as ButtonData;
+            if (elementData == null)
+            {
+                _testLabel.text = "";
+                return;
+            }
+
+            _testLabel.text = elementData.ButtonText;
+
+            elementData.Action?.Invoke();
+
+        }
 
     }
-
 }

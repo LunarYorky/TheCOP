@@ -1,6 +1,5 @@
-using System;
 using System.Collections.Generic;
-using TheCOP.Yorky.UI;
+using TheCoP.UI.Scripts;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,7 +19,7 @@ namespace TheCoP.Scripts__components_.UI
             Stats
         }
 
-        private Stack<Menus> stack = new();
+        private readonly Stack<Menus> _menusStack = new();
 
         private InventoryUIController _inventoryUIController;
         private StatisticsUIController _statisticsUIController;
@@ -28,7 +27,7 @@ namespace TheCoP.Scripts__components_.UI
 
         public void Switch()
         {
-            if (stack.Count == 0)
+            if (_menusStack.Count == 0)
             {
                 _uIDocument = GetComponent<UIDocument>();
                 _inventoryUIController = GetComponent<InventoryUIController>();
@@ -37,15 +36,15 @@ namespace TheCoP.Scripts__components_.UI
                 gameObject.SetActive(true);
                 overlay.SetActive(false);
 
-                stack.Clear();
-                stack.Push(Menus.SelectPanel);
+                _menusStack.Clear();
+                _menusStack.Push(Menus.SelectPanel);
                 Open(Menus.SelectPanel);
             }
             else
             {
                 Menus item;
-                stack.Pop();
-                if (stack.TryPeek(out item))
+                _menusStack.Pop();
+                if (_menusStack.TryPeek(out item))
                 {
                     Open(item);
                 }
@@ -77,27 +76,27 @@ namespace TheCoP.Scripts__components_.UI
         private void OpenSelectPanel()
         {
             _uIDocument.visualTreeAsset = selectPanelAsset;
-            var _root = _uIDocument.rootVisualElement;
+            var root = _uIDocument.rootVisualElement;
 
-            var _equipment = _root.Q<VisualElement>("Equipment");
-            var _inventory = _root.Q<VisualElement>("Inventory");
-            var _statistics = _root.Q<VisualElement>("Statistics");
-            var _other = _root.Q<VisualElement>("Other");
-            var _settings = _root.Q<VisualElement>("Settings");
+            var equipment = root.Q<VisualElement>("Equipment");
+            var inventory = root.Q<VisualElement>("Inventory");
+            var statistics = root.Q<VisualElement>("Statistics");
+            var other = root.Q<VisualElement>("Other");
+            var settings = root.Q<VisualElement>("Settings");
 
-            _equipment.userData = new VisualElementController(_equipment, () => Debug.Log("Equipment open"));
-            _inventory.userData = new VisualElementController(_inventory, () =>
+            equipment.userData = new VisualElementController(equipment, () => Debug.Log("Equipment open"));
+            inventory.userData = new VisualElementController(inventory, () =>
             {
-                stack.Push(Menus.Invent);
+                _menusStack.Push(Menus.Invent);
                 Open(Menus.Invent);
             });
-            _statistics.userData = new VisualElementController(_statistics, () =>
+            statistics.userData = new VisualElementController(statistics, () =>
             {
-                stack.Push(Menus.Stats);
+                _menusStack.Push(Menus.Stats);
                 Open(Menus.Stats);
             });
-            _other.userData = new VisualElementController(_other, () => Debug.Log("Other open"));
-            _settings.userData = new VisualElementController(_settings, () => Debug.Log("Settings open"));
+            other.userData = new VisualElementController(other, () => Debug.Log("Other open"));
+            settings.userData = new VisualElementController(settings, () => Debug.Log("Settings open"));
         }
 
         private void OpenInventory()

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Globalization;
-using TheCoP.Architecture.Data_types;
+﻿using System.Globalization;
 using TheCoP.Architecture.Enums;
 using TheCoP.Scripts__components_;
-using UnityEngine;
+using TheCoP.Scripts__components_.UI;
 using UnityEngine.UIElements;
 
-namespace TheCOP.Yorky.UI
+namespace TheCoP.UI.Scripts
 {
     public class StatElementController
     {

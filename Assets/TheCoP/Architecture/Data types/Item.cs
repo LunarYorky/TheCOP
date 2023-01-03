@@ -44,17 +44,17 @@ public class Item
     {
         _ref = ResourcesManager.Items[refId];
         _number = number;
-        initStats();
+        InitStats();
     }
 
     public Item(short refId)
     {
         _ref = ResourcesManager.Items[refId];
         _number = 1;
-        initStats();
+        InitStats();
     }
 
-    private void initStats()
+    private void InitStats()
     {
         _number = 1;
         _refId = _ref.Id;

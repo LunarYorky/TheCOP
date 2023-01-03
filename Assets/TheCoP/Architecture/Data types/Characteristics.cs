@@ -1,7 +1,4 @@
 ﻿using System;
-using TheCoP.Architecture.Enums;
-using TheCoP.Scripts__components_;
-using UnityEngine;
 
 namespace TheCoP.Architecture.Data_types
 {

@@ -1,107 +1,110 @@
 using System.Collections;
 using System.Collections.Generic;
-using TheCoP.Scripts__components_;
 using UnityEngine;
 
-public class HitBox : MonoBehaviour
+namespace TheCoP.Scripts__components_.Damage
 {
-    public float rotationTime;
-    public float rotationAngle;
-    public float damage;
-
-    private float speed;
-    private Vector3 parentPosition;
-    private List<Collider2D> hitedTargets = new(5);
-    private List<Collider2D> targets = new(5);
-    private List<bool> interrupt = new(5);
-    private List<float> distances = new(5);
-
-    void Start()
+    public class HitBox : MonoBehaviour
     {
-        parentPosition = transform.parent.position;
+        public float rotationTime;
+        public float rotationAngle;
+        public float damage;
 
-        speed = Mathf.Abs(rotationAngle) / rotationTime;
+        private float _speed;
+        private Vector3 _parentPosition;
+        private readonly List<Collider2D> _hitedTargets = new(5);
+        private readonly List<Collider2D> _collider2Ds = new(5);
+        private readonly List<bool> _interrupt = new(5);
+        private readonly List<float> _distances = new(5);
 
-        if (rotationAngle > 0)
+        private void Start()
         {
-            speed *= -1;
-        }
+            _parentPosition = transform.parent.position;
 
-        StartCoroutine(Rotator());
-    }
+            _speed = Mathf.Abs(rotationAngle) / rotationTime;
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    private IEnumerator Rotator()
-    {
-        while (rotationTime > 0)
-        {
-            hiting();
-
-            transform.Rotate(0, 0, Time.deltaTime * speed);
-            rotationTime -= Time.deltaTime;
-
-            yield return new WaitForFixedUpdate();
-        }
-
-        Destroy(gameObject);
-    }
-
-    private void hiting()
-    {
-        for (int i = 0; i < distances.Count; i++)
-        {
-            var element = LowElementIn(distances);
-            if (interrupt[element])
+            if (rotationAngle > 0)
             {
-                Debug.Log("123");
-                // прерывание атаки
-                Destroy(gameObject);
-                break;
+                _speed *= -1;
             }
 
-            if (!hitedTargets.Contains(targets[element]))
-            {
-                hitedTargets.Add(targets[element]);
+            StartCoroutine(Rotator());
+        }
 
-                //логика отправки сообщения о попадании
-                var stats = targets[element].GetComponent<Statistics>();
-                if (stats != null)
-                    Debug.Log("Hit");
+        // ReSharper disable Unity.PerformanceAnalysis
+        private IEnumerator Rotator()
+        {
+            while (rotationTime > 0)
+            {
+                Hiting();
+
+                transform.Rotate(0, 0, Time.deltaTime * _speed);
+                rotationTime -= Time.deltaTime;
+
+                yield return new WaitForFixedUpdate();
             }
 
-            targets.RemoveAt(element);
-            distances.RemoveAt(element);
-            interrupt.RemoveAt(element);
-        }
-    }
-
-    private int LowElementIn(List<float> list)
-    {
-        if (list.Count < 2)
-        {
-            return 0;
+            Destroy(gameObject);
         }
 
-        float min = list[0];
-        int element = 0;
-
-        for (int i = 1; i < list.Count; i++)
+        private void Hiting()
         {
-            if (list[i] < min)
+            for (int i = 0; i < _distances.Count; i++)
             {
-                min = list[i];
-                element = i;
+                var element = LowElementIn(_distances);
+                if (_interrupt[element])
+                {
+                    Debug.Log("Hitbox tick");
+                    // прерывание атаки
+                    Destroy(gameObject);
+                    break;
+                }
+
+                if (!_hitedTargets.Contains(_collider2Ds[element]))
+                {
+                    _hitedTargets.Add(_collider2Ds[element]);
+
+                    //логика отправки сообщения о попадании
+                    var stats = _collider2Ds[element].GetComponent<Statistics>();
+                    if (stats != null)
+                        Debug.Log("Hit");
+                    //TODO: dealing damage
+                }
+
+                _collider2Ds.RemoveAt(element);
+                _distances.RemoveAt(element);
+                _interrupt.RemoveAt(element);
             }
         }
 
-        return element;
-    }
+        private int LowElementIn(List<float> list)
+        {
+            if (list.Count < 2)
+            {
+                return 0;
+            }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log("TriggerEnter");
-        targets.Add(col);
-        interrupt.Add(col.tag == "Wall" || col.tag == "Solid" ? true : false);
-        distances.Add(Vector3.Distance(parentPosition, col.transform.position));
+            float min = list[0];
+            int element = 0;
+
+            for (int i = 1; i < list.Count; i++)
+            {
+                if (list[i] < min)
+                {
+                    min = list[i];
+                    element = i;
+                }
+            }
+
+            return element;
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            Debug.Log("TriggerEnter");
+            _collider2Ds.Add(col);
+            _interrupt.Add(col.tag is "Wall" or "Solid");
+            _distances.Add(Vector3.Distance(_parentPosition, col.transform.position));
+        }
     }
 }

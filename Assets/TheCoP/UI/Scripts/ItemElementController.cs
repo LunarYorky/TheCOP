@@ -1,39 +1,37 @@
 ﻿using UnityEngine.UIElements;
 
-namespace TheCOP.Yorky.UI
+namespace TheCoP.UI.Scripts
 {
     public class ItemElementController
     {
-        private VisualElement _vl;
-        private VisualElement icon;
-        private Label elemetName;
-        private Label mass;
-        private Label volume;
-        private ButtonAction buttonAction;
+        private readonly VisualElement _icon;
+        private readonly Label _elementName;
+        private readonly Label _mass;
+        private readonly Label _volume;
+        private ButtonAction _buttonAction;
 
         public ItemElementController(VisualElement vl)
         {
-            _vl = vl;
-            _vl.RegisterCallback<ClickEvent>(OnClick);
+            vl.RegisterCallback<ClickEvent>(OnClick);
 
-            icon = _vl.Q<VisualElement>("Icon");
-            elemetName = _vl.Q<Label>("Name");
-            mass = _vl.Q<Label>("Mass");
-            volume = _vl.Q<Label>("Volume");
+            _icon = vl.Q<VisualElement>("Icon");
+            _elementName = vl.Q<Label>("Name");
+            _mass = vl.Q<Label>("Mass");
+            _volume = vl.Q<Label>("Volume");
         }
 
         public void SetItemData(Item item, ButtonAction action)
         {
-            icon.style.backgroundImage = new StyleBackground(item.Icon);
-            elemetName.text = item.Name;
-            mass.text = "Mass: " + item.Weight.ToString();
-            volume.text = "Volume: " + item.Volume.ToString();
-            buttonAction = action;
+            _icon.style.backgroundImage = new StyleBackground(item.Icon);
+            _elementName.text = item.Name;
+            _mass.text = "Mass: " + item.Weight;
+            _volume.text = "Volume: " + item.Volume;
+            _buttonAction = action;
         }
 
         private void OnClick(ClickEvent ce)
         {
-            buttonAction?.Invoke();
+            _buttonAction?.Invoke();
         }
     }
 }

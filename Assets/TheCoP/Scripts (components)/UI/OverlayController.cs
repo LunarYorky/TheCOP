@@ -1,9 +1,8 @@
 ﻿using System.Globalization;
-using TheCoP.Scripts__components_;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace TheCOP.Yorky.UI
+namespace TheCoP.Scripts__components_.UI
 {
     public class OverlayController : MonoBehaviour
     {

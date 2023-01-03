@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UIElements;
 
-namespace TheCOP.Yorky.UI
+namespace TheCoP.UI.Scripts
 {
     public class VisualElementController
     {

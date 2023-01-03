@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TheCoP.Scripts__components_.Damage;
+using UnityEngine;
 
 namespace TheCoP.Scripts__components_.Player_scripts.States
 {

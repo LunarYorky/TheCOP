@@ -4,13 +4,12 @@ using TheCoP.Architecture.Data_types;
 using TheCoP.Architecture.Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 namespace TheCoP.Scripts__components_
 {
     public class Statistics : MonoBehaviour
     {
-        public float test;
+        public float testStaminaRegen;
         private int _id;
         private int _status;
 
@@ -186,7 +185,7 @@ namespace TheCoP.Scripts__components_
             var temp = 10 * GeneralCharacteristics.Constitution;
             _maxHealth = 100 + temp;
             _MaxStamina = 100 + 10 * GeneralCharacteristics.Endurance;
-            _staminaRegen = test;
+            _staminaRegen = testStaminaRegen;
 
             PhysicalResistance = new PhysicalResistance(50 + temp, 50 + temp, 50 + temp);
         }

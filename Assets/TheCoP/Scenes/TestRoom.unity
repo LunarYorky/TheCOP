@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22cc9e0183812d4fb1d320258a9e2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0.05
+  testStaminaRegen: 0.01
   _basicCharacteristics:
     Strength: 0
     Dexterity: 0
@@ -6787,6 +6787,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4400545386300696669, guid: fc0e1614fb2114b4684ca8466059c173, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 242893985}
+    - target: {fileID: 4400545386300696669, guid: fc0e1614fb2114b4684ca8466059c173, type: 3}
       propertyPath: sourse
       value: 
       objectReference: {fileID: 242893985}
@@ -6840,6 +6844,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7598111523948060220, guid: fc0e1614fb2114b4684ca8466059c173, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 242893985}
+    - target: {fileID: 8826721519181418089, guid: fc0e1614fb2114b4684ca8466059c173, type: 3}
+      propertyPath: source
       value: 
       objectReference: {fileID: 242893985}
     - target: {fileID: 8826721519181418089, guid: fc0e1614fb2114b4684ca8466059c173, type: 3}
