@@ -89,9 +89,8 @@ namespace TheCoP.Scripts__components_
             {
                 if (value > 0)
                     _currentStamina = value > _MaxStamina ? _MaxStamina : value;
-
                 else
-                    _currentHealth = 0f;
+                    _currentStamina = 0f;
             }
         }
 

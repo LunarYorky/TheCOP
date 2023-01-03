@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/TheCoP/Scenes/TestRoom.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 122815fc00d30db4e8cf4ba3da3ce9db, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: 57bb4440f4347034b8082af05ef8c251, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 2559b303335a07442aaab1b27af95065, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 2037eb32fa1e2944387080b8a2b2448a, type: 2}
