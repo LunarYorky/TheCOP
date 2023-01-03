@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
-    private static Dictionary<int, ItemReference> items = new();
+    private static Dictionary<short, ItemReference> items = new();
 
-    public static Dictionary<int, ItemReference> Items
+    public static Dictionary<short, ItemReference> Items
     {
         get { return items; }
         private set { items = value; }
     }
 
-    void Start()
+    void Awake()
     {
         InitItemDictionary();
 

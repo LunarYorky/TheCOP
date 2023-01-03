@@ -9,6 +9,7 @@ namespace TheCoP.Scripts__components_.Entities.State_Machines
     {
         // Dasher serialized fields
         [SerializeField] private float dashSpeed = 7f;
+        [SerializeField] private int dashStamina = 60;
 
         // Dasher getters
         public float DashSpeed => dashSpeed;
@@ -18,10 +19,11 @@ namespace TheCoP.Scripts__components_.Entities.State_Machines
         protected override void Awake()
         {
             base.Awake();
+            var statistics = GetComponent<Statistics>();
 
             DashState = new DashState(this, Animator, Rigidbody2D);
 
-            At(MovementState, DashState, () => WantToDash);
+            At(MovementState, DashState, () => WantToDash && statistics.UseUpStamina(dashStamina));
             At(DashState, MovementState, () => !Animator.GetCurrentAnimatorStateInfo(0).IsName("Roll"));
 
             StateMachine.SetState(MovementState);

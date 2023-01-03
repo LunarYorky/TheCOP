@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/TheCoP/UI/Game%20%20menu/GamePanels.uss?fileID=7433441132597879392&amp;guid=63dd11e623f159a4a9e6fdfa83a99e59&amp;type=3#GamePanels" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: flex-start;">
+        <ui:VisualElement name="Characteristics" class="Panel" style="display: flex;">
+            <ui:VisualElement class="TopOfPanel">
+                <ui:Label text="Characteristics" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+            <ui:VisualElement name="CharacteristicsList" class="MidOfPanel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Statistics" class="Panel">
+            <ui:VisualElement class="TopOfPanel">
+                <ui:Label text="Statistics" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+            <ui:VisualElement name="StatisticsList" class="MidOfPanel" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

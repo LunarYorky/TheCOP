@@ -1,17 +1,35 @@
 using UnityEngine.UIElements;
 
-
-public class ListViewElementController
+namespace TheCoP.UI.Scripts
 {
-    Label elemetName;
-
-    public void SetVisualElemet(VisualElement visualElement)
+    public class ListViewElementController
     {
-        elemetName = visualElement.Q<Label>();
-    }
+        private readonly Label _elementName;
+        private ButtonAction _buttonAction;
 
-    public void SetElemetData(ButtonData data)
-    {
-        elemetName.text = data.ButtonText;
+        public ListViewElementController(VisualElement vl)
+        {
+            vl.RegisterCallback<ClickEvent>(OnClick);
+            _elementName = vl.Q<Label>();
+
+        }
+
+        public void SetElementData(ButtonData data)
+        {
+            _elementName.text = data.ButtonText;
+            _buttonAction = data.Action;
+        }
+
+        public void SetElementData(string label, ButtonAction action)
+        {
+            _elementName.text = label;
+            _buttonAction = action;
+        }
+
+        private void OnClick(ClickEvent ev)
+        {
+            _buttonAction?.Invoke();
+
+        }
     }
 }

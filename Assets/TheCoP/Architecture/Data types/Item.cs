@@ -44,17 +44,17 @@ public class Item
     {
         _ref = ResourcesManager.Items[refId];
         _number = number;
-        initStats();
+        InitStats();
     }
 
     public Item(short refId)
     {
         _ref = ResourcesManager.Items[refId];
         _number = 1;
-        initStats();
+        InitStats();
     }
 
-    private void initStats()
+    private void InitStats()
     {
         _number = 1;
         _refId = _ref.Id;
@@ -93,17 +93,26 @@ public class Item
                 return false;
 
             _enchants.Sort();
+            item._enchants.Sort();
 
             for (int i = 0; i < _enchants.Count; i++)
             {
                 if (_enchants[i] != item.Enchants[i])
                     return false;
             }
+
+            return _equippedSlot == 0 &&
+                   item.EquippedSlot == 0 &&
+                   _refId == item._refId &&
+                   _durability == item._durability &&
+                   _state == item._state &&
+                   _level == item._level;
         }
 
         if (_enchants == null && item.Enchants == null)
         {
             return _equippedSlot == 0 &&
+                   item.EquippedSlot == 0 &&
                    _refId == item._refId &&
                    _durability == item._durability &&
                    _state == item._state &&

@@ -81,3 +81,4 @@ crashlytics-build.properties
 /[Aa]ssets/*
 !/[Aa]ssets/TheCoP/
 !/[Aa]ssets/TheCoP.meta
+/.idea/

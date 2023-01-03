@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="background-color: rgb(135, 100, 64); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 16px; border-bottom-left-radius: 16px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement style="flex-direction: row; margin-left: 30px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;">
+            <ui:VisualElement name="Icon" style="background-color: rgb(255, 129, 129); width: 32px; height: 32px; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="Name" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; justify-content: flex-end; -unity-text-align: middle-left;">
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="Mass" />
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="Volume" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

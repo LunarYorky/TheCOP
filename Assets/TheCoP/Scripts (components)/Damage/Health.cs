@@ -1,31 +1,34 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Statistics))]
-public class Health : MonoBehaviour
+namespace TheCoP.Scripts__components_.Damage
 {
-    private float currentHealth;
-    private float resresistance;
-
-    public float Resresistance
+    [RequireComponent(typeof(Statistics))]
+    public class Health : MonoBehaviour
     {
-        get { return resresistance; }
-        set { resresistance = value; }
-    }
+        private float _currentHealth;
+        private float _invertedResistance;
 
-    public float CurrentHealth
-    {
-        get { return currentHealth; }
-        private set { currentHealth = value < 0f ? 0f : value; }
-    }
+        public float InvertedResistance
+        {
+            get { return _invertedResistance; }
+            set { _invertedResistance = value; }
+        }
 
-    public void DealingDamage(float damage)
-    {
-        currentHealth = damage * resresistance;
-    }
+        public float CurrentHealth
+        {
+            get { return _currentHealth; }
+            private set { _currentHealth = value < 0f ? 0f : value; }
+        }
 
-    void Update()
-    {
-        if (currentHealth == 0)
-            Destroy(gameObject);
+        public void DealingDamage(float damage)
+        {
+            _currentHealth -= damage * _invertedResistance;
+        }
+
+        void Update()
+        {
+            if (_currentHealth == 0)
+                Destroy(gameObject);
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "Test room 2022",
+    "name": "TheCoP",
     "maps": [
         {
             "name": "Player",
@@ -42,18 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Save",
+                    "name": "Menu",
                     "type": "Button",
-                    "id": "67c2a18f-de8e-44f0-9683-aefd0c1e55ab",
+                    "id": "f6ad0724-5a3b-4a4b-9937-89cbaaa72cb2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Load",
+                    "name": "Test",
                     "type": "Button",
-                    "id": "feb95357-b519-4fed-b7b6-1028492596a1",
+                    "id": "0f767633-7d14-45b0-9885-2ef1cd15278d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -294,23 +294,23 @@
                 },
                 {
                     "name": "",
-                    "id": "84f4d805-66db-41ef-8d10-0a61116c4a0e",
-                    "path": "<Keyboard>/o",
+                    "id": "47fb482e-90b9-453d-8efb-d5d44c61e4d0",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Save",
+                    "groups": "",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "49129a68-d365-4ebc-a2c3-584953977718",
-                    "path": "<Keyboard>/p",
+                    "id": "0936d63d-9a0f-417c-95ae-bb627393f034",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Load",
+                    "action": "Test",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
